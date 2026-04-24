@@ -1,0 +1,2 @@
+# ssb
+simple server blocker
