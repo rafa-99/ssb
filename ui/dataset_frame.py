@@ -2,6 +2,7 @@ import os
 import json
 import tkinter as tk
 import tkinter.filedialog
+import utils.constants as C
 
 from pathlib import Path
 
@@ -14,7 +15,7 @@ class DatasetFrame(tk.Frame):
 
         tk.Button(
             self,
-            text="Select Dataset",
+            text=C.SELECT_DATASET,
             command=self.select_file
         ).pack(side="left", padx=5)
 

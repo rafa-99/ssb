@@ -1,7 +1,7 @@
 import os
 import tkinter as tk
 import tkinter.filedialog
-
+import utils.constants as C
 
 class ExecutableFrame(tk.Frame):
     def __init__(self, parent):
@@ -12,12 +12,12 @@ class ExecutableFrame(tk.Frame):
 
         tk.Button(
             self,
-            text="Select Executable",
+            text=C.SELECT_EXECUTABLE,
             command=self.select_file
         ).pack(side="left", padx=5)
 
         tk.Label(self, textvariable=self.display).pack(side="left", padx=5)
-        tk.Label(self, text="(optional)").pack(side="left", padx=5)
+        tk.Label(self, text=C.OPTIONAL).pack(side="left", padx=5)
 
     def select_file(self):
         path = tk.filedialog.askopenfilename()

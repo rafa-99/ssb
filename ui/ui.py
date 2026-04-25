@@ -1,4 +1,5 @@
 import tkinter as tk
+import utils.constants as C
 
 from .dataset_frame import DatasetFrame
 from .executable_frame import ExecutableFrame
@@ -7,13 +8,11 @@ from .lower_buttons_frame import LowerButtonsFrame
 
 from utils.resources import resource_path
 
-SIZE = 512
-
 def startUI():
     root = tk.Tk()
     root.title("ssb")
-    root.geometry(f"{SIZE}x{SIZE}")
-    root.iconbitmap(resource_path("assets/app.ico"))
+    root.geometry(C.GEOMETRY + "x" + C.GEOMETRY)
+    root.iconbitmap(resource_path(C.ICON))
 
     data_store = {"data": None, "name": ""}
 

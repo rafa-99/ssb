@@ -1,7 +1,7 @@
 import tkinter as tk
-from model.tree_model import set_children, get_selected_paths
+import utils.constants as C
 
-TREE_HEIGHT = 300
+from model.tree_model import set_children, get_selected_paths
 
 class TreeView(tk.Frame):
     def __init__(self, parent):
@@ -9,7 +9,7 @@ class TreeView(tk.Frame):
 
         self.model = []
 
-        self.canvas = tk.Canvas(self, height=TREE_HEIGHT)
+        self.canvas = tk.Canvas(self, height=C.TREE_HEIGHT)
         self.scrollbar = tk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = tk.Frame(self.canvas)
         self.scrollable_frame.bind(
