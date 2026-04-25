@@ -9,7 +9,6 @@ from services.firewall import generate_firewall_rules, apply_rules, remove_rules
 
 SIZE = 512
 
-
 def startUI():
     root = tk.Tk()
     root.title("Firewall Tool")
@@ -18,25 +17,21 @@ def startUI():
     data_store = {"data": None}
     rules_active = {"value": False}
 
-    top = tk.Frame(root)
-    top.pack(anchor="w", pady=5, fill="x")
-
     tree = TreeView(root)
-
     dataset = DatasetFrame(
-        top,
+        root,
         on_load=lambda data: load_dataset(tree, data_store, data)
     )
-    executable = ExecutableFrame(top)
+    executable = ExecutableFrame(root)
 
     dataset.pack(anchor="w", pady=5)
     executable.pack(anchor="w", pady=5)
     tree.pack(fill="both", expand=True, pady=5)
 
-    button_text = tk.StringVar(value="Apply Firewall Rules")
+    button_text = tk.StringVar(value="Block Servers")
 
     tk.Button(
-        root,
+        master=root,
         textvariable=button_text,
         command=lambda: toggle_rules(tree, executable, data_store, rules_active, button_text)
     ).pack(anchor="w", padx=5, pady=5)
@@ -50,11 +45,11 @@ def load_dataset(tree, store, data):
 def toggle_rules(tree, executable, store, state, label_var):
     if state["value"]:
         remove_rules()
-        label_var.set("Apply Firewall Rules")
+        label_var.set("Block Servers")
         state["value"] = False
     else:
         apply_rules_ui(tree, executable, store)
-        label_var.set("Remove Firewall Rules")
+        label_var.set("Unblock Servers")
         state["value"] = True
 
 

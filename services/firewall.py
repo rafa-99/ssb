@@ -13,23 +13,16 @@ def generate_firewall_rules(exe_path, ips, chunk_size=50):
     for i, chunk in enumerate(chunk_list(ip_list, chunk_size), start=1):
         ip_string = ",".join(chunk)
 
+        rule = (
+            f'New-NetFirewallRule '
+            f'-DisplayName "FirewallTool Block {i}" '
+            f'-Direction Outbound '
+            f'-Action Block '
+            f'-RemoteAddress {ip_string}'
+        )
+
         if use_program:
-            rule = (
-                f'New-NetFirewallRule '
-                f'-DisplayName "FirewallTool Block {i}" '
-                f'-Direction Outbound '
-                f'-Action Block '
-                f'-RemoteAddress {ip_string} '
-                f'-Program "{exe_path}"'
-            )
-        else:
-            rule = (
-                f'New-NetFirewallRule '
-                f'-DisplayName "FirewallTool Block {i}" '
-                f'-Direction Outbound '
-                f'-Action Block '
-                f'-RemoteAddress {ip_string}'
-            )
+            rule += f' -Program "{exe_path}"'
 
         rules.append(rule)
 

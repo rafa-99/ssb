@@ -3,7 +3,6 @@ import json
 import tkinter as tk
 import tkinter.filedialog
 
-
 class DatasetFrame(tk.Frame):
     def __init__(self, parent, on_load):
         super().__init__(parent)
