@@ -1,7 +1,8 @@
+import subprocess
+
 def chunk_list(items, size):
     for i in range(0, len(items), size):
         yield items[i:i + size]
-
 
 def generate_firewall_rules(exe_path, ips, chunk_size=50):
     rules = []
@@ -33,3 +34,23 @@ def generate_firewall_rules(exe_path, ips, chunk_size=50):
         rules.append(rule)
 
     return rules
+
+def apply_rules(rules):
+    for rule in rules:
+        subprocess.run(
+            ["powershell", "-Command", rule],
+            shell=True
+        )
+
+
+def remove_rules():
+    command = (
+        'Get-NetFirewallRule | '
+        'Where-Object {$_.DisplayName -like "FirewallTool Block *"} | '
+        'Remove-NetFirewallRule'
+    )
+
+    subprocess.run(
+        ["powershell", "-Command", command],
+        shell=True
+    )
