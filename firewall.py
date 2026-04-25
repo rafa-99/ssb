@@ -1,4 +1,4 @@
-from UI import start_UI
+from UI import startUI
 
 if __name__ == '__main__':
-    start_UI()
+    startUI()
