@@ -46,3 +46,23 @@ def remove_rules():
         ["powershell", "-Command", command],
         shell=True
     )
+
+def count_rules():
+    command = (
+        'Get-NetFirewallRule | '
+        'Where-Object {$_.DisplayName -like "ssb Block*"} | '
+        'Measure-Object | '
+        'Select-Object -ExpandProperty Count'
+    )
+
+    result = subprocess.run(
+        ["powershell", "-Command", command],
+        capture_output=True,
+        text=True,
+        creationflags=subprocess.CREATE_NO_WINDOW
+    )
+
+    try:
+        return int(result.stdout.strip())
+    except:
+        return 0

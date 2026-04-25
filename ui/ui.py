@@ -28,7 +28,7 @@ def startUI():
     dataset.pack(anchor="w", pady=5)
     executable.pack(anchor="w", pady=5)
     tree.pack(fill="both", expand=True, pady=5)
-    lowerButtons.pack(anchor="w", pady=5)
+    lowerButtons.pack(fill="x", pady=5)
 
     root.mainloop()
 
