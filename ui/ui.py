@@ -5,12 +5,15 @@ from .executable_frame import ExecutableFrame
 from .tree_view import TreeView
 from .lower_buttons_frame import LowerButtonsFrame
 
+from utils.resources import resource_path
+
 SIZE = 512
 
 def startUI():
     root = tk.Tk()
     root.title("ssb")
     root.geometry(f"{SIZE}x{SIZE}")
+    root.iconbitmap(resource_path("assets/app.ico"))
 
     data_store = {"data": None, "name": ""}
 
