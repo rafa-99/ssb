@@ -25,7 +25,7 @@ def apply_rules_ui(tree, executable, store):
         print(ipErrorString)
         return
 
-    rules = generate_firewall_rules(exe_path, ips)
+    rules = generate_firewall_rules(exe_path, ips, f'-{store["name"]}')
 
     apply_rules(rules)
 

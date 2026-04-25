@@ -9,11 +9,10 @@ SIZE = 512
 
 def startUI():
     root = tk.Tk()
-    root.title("Firewall Tool")
+    root.title("ssb")
     root.geometry(f"{SIZE}x{SIZE}")
 
-    data_store = {"data": None}
-    rules_active = {"value": False}
+    data_store = {"data": None, "name": ""}
 
     tree = TreeView(root)
     dataset = DatasetFrame(
@@ -21,7 +20,7 @@ def startUI():
         on_load=lambda data: load_dataset(tree, data_store, data)
     )
     executable = ExecutableFrame(root)
-    lowerButtons = LowerButtonsFrame(root, tree, executable, data_store, rules_active)
+    lowerButtons = LowerButtonsFrame(root, tree, executable, data_store, {"value": False})
 
     dataset.pack(anchor="w", pady=5)
     executable.pack(anchor="w", pady=5)
@@ -31,5 +30,7 @@ def startUI():
     root.mainloop()
 
 def load_dataset(tree, store, data):
-    store["data"] = data
-    tree.load_data(data)
+    store["data"] = data["data"]
+    store["name"] = data["name"]
+    
+    tree.load_data(data["data"])

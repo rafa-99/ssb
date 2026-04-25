@@ -4,7 +4,7 @@ def chunk_list(items, size):
     for i in range(0, len(items), size):
         yield items[i:i + size]
 
-def generate_firewall_rules(exe_path, ips, chunk_size=50):
+def generate_firewall_rules(exe_path, ips, label="", chunk_size=50):
     rules = []
     ip_list = sorted(ips)
 
@@ -15,7 +15,7 @@ def generate_firewall_rules(exe_path, ips, chunk_size=50):
 
         rule = (
             f'New-NetFirewallRule '
-            f'-DisplayName "FirewallTool Block {i}" '
+            f'-DisplayName "ssb Block{label} {i}" '
             f'-Direction Outbound '
             f'-Action Block '
             f'-RemoteAddress {ip_string}'
@@ -35,11 +35,10 @@ def apply_rules(rules):
             shell=True
         )
 
-
 def remove_rules():
     command = (
         'Get-NetFirewallRule | '
-        'Where-Object {$_.DisplayName -like "FirewallTool Block *"} | '
+        'Where-Object {$_.DisplayName -like "ssb Block*"} | '
         'Remove-NetFirewallRule'
     )
 

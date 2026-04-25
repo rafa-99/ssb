@@ -3,6 +3,8 @@ import json
 import tkinter as tk
 import tkinter.filedialog
 
+from pathlib import Path
+
 class DatasetFrame(tk.Frame):
     def __init__(self, parent, on_load):
         super().__init__(parent)
@@ -28,4 +30,4 @@ class DatasetFrame(tk.Frame):
         with open(path) as f:
             data = json.load(f)
 
-        self.on_load(data)
+        self.on_load({"data":data, "name": Path(path).stem})

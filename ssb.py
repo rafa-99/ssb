@@ -1,4 +1,7 @@
 from ui.ui import startUI
 
-if __name__ == "__main__":
+def startApp():
     startUI()
+
+if __name__ == "__main__":
+    startApp()
