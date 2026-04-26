@@ -5,19 +5,21 @@ import utils.constants as C
 from services.ip_utils import collect_ips
 from services.firewall import generate_firewall_rules, apply_rules, remove_rules, count_rules
 
+from tkinter import messagebox
+
 def apply_rules_ui(tree, executable, store):
     data = store["data"]
     exe_path = executable.path.get()
 
     if not data:
-        print(C.ERROR_DATASET)
+        messagebox.showerror(C.ERROR_MESSAGE, C.ERROR_DATASET)
         return
 
     selected = tree.get_selected()
     ips = collect_ips(data, selected)
 
     if not ips:
-        print(C.ERROR_IP)
+        messagebox.showerror(C.ERROR_MESSAGE, C.ERROR_IP)
         return
 
     rules = generate_firewall_rules(exe_path, ips, f'-{store["name"]}')
@@ -77,13 +79,16 @@ class LowerButtonsFrame(tk.Frame):
         self.update_rule_count()
 
     def handle_cleanup(self):
-        remove_rules()
+        if messagebox.askyesno(C.CONFIRM_MESSAGE, C.REMOVE_ALL_RULES):
+            remove_rules()
 
-        self.rules_active["value"] = False
-        self.button_text.set(C.BLOCK_SERVER)
+            self.rules_active["value"] = False
+            self.button_text.set(C.BLOCK_SERVER)
 
-        self.update_rule_count()
+            self.update_rule_count()
 
     def update_rule_count(self):
         count = count_rules()
+        if self.data_store["data"] is not None:
+            messagebox.showinfo(C.SUCCESS_MESSAGE, f"{count} {C.FIREWALL_UPDATED}")
         self.count_text.set(f"{C.SERVER_RULES} {count}")

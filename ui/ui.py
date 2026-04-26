@@ -10,7 +10,7 @@ from utils.resources import resource_path
 
 def startUI():
     root = tk.Tk()
-    root.title("ssb")
+    root.title(C.APP_NAME + " " + C.VERSION)
     root.geometry(C.GEOMETRY + "x" + C.GEOMETRY)
     root.iconbitmap(resource_path(C.ICON))
 
