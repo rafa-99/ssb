@@ -66,10 +66,10 @@ dist\
 ## Donate
 Donate to support me and my projects
 
-| ![Paypal](https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg) | ![Bitcoin](assets/bitcoin.png) | ![Monero](assets/monero.png) |
+| [![PayPal](https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg)](https://paypal.me/raafaa99) | ![Bitcoin](assets/bitcoin.png) | ![Monero](assets/monero.png) |
 | :---: | :---: | :---: |
-| Paypal | Bitcoin | Monero |
-| ![raafaa99](https://paypal.me/raafaa99) | 1MvzcDqAVfuQLYZKNCcBoVNYe2neta3pkM | 4254FmcCGBNbaq9CcqkUSk8eY3cqACjrGXRWkxXxXbjD1Up3Nu4BsCA1YCkrnrzG4SUmwDJQnBYJoeLrucWSDRhyRchRAHP |
+| PayPal | Bitcoin | Monero |
+| [raafaa99](https://paypal.me/raafaa99) | 1MvzcDqAVfuQLYZKNCcBoVNYe2neta3pkM | 4254FmcCGBNbaq9CcqkUSk8eY3cqACjrGXRWkxXxXbjD1Up3Nu4BsCA1YCkrnrzG4SUmwDJQnBYJoeLrucWSDRhyRchRAHP |
 
 
 ## License
