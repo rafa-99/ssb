@@ -36,6 +36,7 @@
 
 <a href="https://pastebin.com/hs1xSi1P">https://pastebin.com/hs1xSi1P</a>
 ## Build
+Make sure you have ![python3](https://www.python.org/downloads/) installed on your system.
 ### 1. Install PyInstaller
 
 ```bat
@@ -65,24 +66,11 @@ dist\
 ## Donate
 Donate to support me and my projects
 
-<table style="text-align: center;">
-  <tr>
-    <td><a href="https://paypal.me/raafaa99"><img src="https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg" alt="PayPal" width="100px" ></a></td>
-    <td><img src="assets/bitcoin.png" alt="Bitcoin" width="100px" ></a></td>
-    <td><img src="assets/monero.png" alt="Monero" width="100px" ></a></td>
-  </tr>
- <tr>
-    <td>Paypal</td>
-    <td>Bitcoin</td>
-    <td>Monero</td>
-  </tr>
-  <tr>
-    <td style="word-break: break-all; width: 100px"><a href="https://paypal.me/raafaa99">raafaa99</td>
-    <td style="word-break: break-all; width: 100px">1MvzcDqAVfuQLYZKNCcBoVNYe2neta3pkM</td>
-    <td style="word-break: break-all; width: 100px">4254FmcCGBNbaq9CcqkUSk8eY3cqACjrGXRWkxXxXbjD1Up3Nu4BsCA1YCkrnrzG4SUmwDJQnBYJoeLrucWSDRhyRchRAHP</td>
-  </tr>
+| ![Paypal](https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg) | ![Bitcoin](assets/bitcoin.png) | ![Monero](assets/monero.png) |
+| :---: | :---: | :---: |
+| Paypal | Bitcoin | Monero |
+| ![raafaa99](https://paypal.me/raafaa99) | 1MvzcDqAVfuQLYZKNCcBoVNYe2neta3pkM | 4254FmcCGBNbaq9CcqkUSk8eY3cqACjrGXRWkxXxXbjD1Up3Nu4BsCA1YCkrnrzG4SUmwDJQnBYJoeLrucWSDRhyRchRAHP |
 
-</table>
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)  
