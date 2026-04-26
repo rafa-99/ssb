@@ -17,7 +17,7 @@ SERVER_RULES = "Server Rules:"
 
 # Successes
 SUCCESS_MESSAGE = "Success"
-FIREWALL_UPDATED = "firewall rules updated successfully."
+FIREWALL_UPDATED = "firewall rules are now active."
 CONFIRM_MESSAGE = "Confirm"
 
 # Errors
