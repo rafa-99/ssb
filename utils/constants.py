@@ -1,6 +1,6 @@
 # Configs
 APP_NAME = "ssb"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 GEOMETRY = "512"
 ICON = "assets/app.ico"
 TREE_HEIGHT = 300
