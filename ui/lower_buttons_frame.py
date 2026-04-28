@@ -13,18 +13,18 @@ def apply_rules_ui(tree, executable, store):
 
     if not data:
         messagebox.showerror(C.ERROR_MESSAGE, C.ERROR_DATASET)
-        return
+        return False
 
     selected = tree.get_selected()
     ips = collect_ips(data, selected)
 
     if not ips:
         messagebox.showerror(C.ERROR_MESSAGE, C.ERROR_IP)
-        return
+        return False
 
     rules = generate_firewall_rules(exe_path, ips, f'-{store["name"]}')
 
-    apply_rules(rules)
+    return apply_rules(rules)
 
 def toggle_rules(tree, executable, store, state, label_var):
     if state["value"]:
@@ -32,9 +32,9 @@ def toggle_rules(tree, executable, store, state, label_var):
         label_var.set(C.BLOCK_SERVER)
         state["value"] = False
     else:
-        apply_rules_ui(tree, executable, store)
-        label_var.set(C.UNBLOCK_SERVER)
-        state["value"] = True
+        if apply_rules_ui(tree, executable, store):
+            label_var.set(C.UNBLOCK_SERVER)
+            state["value"] = True
 
 class LowerButtonsFrame(tk.Frame):
     def __init__(self, parent, tree, executable, data_store, rules_active):

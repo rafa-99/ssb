@@ -35,6 +35,7 @@ def apply_rules(rules):
             ["powershell", "-Command", rule],
             shell=True
         )
+    return True
 
 def remove_rules():
     command = (
