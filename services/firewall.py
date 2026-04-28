@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 def chunk_list(items, size):
     for i in range(0, len(items), size):
@@ -22,7 +23,7 @@ def generate_firewall_rules(exe_path, ips, label="", chunk_size=50):
         )
 
         if use_program:
-            rule += f' -Program "{exe_path}"'
+            rule += f' -Program "{os.path.normpath(exe_path)}"'
 
         rules.append(rule)
 
