@@ -1,13 +1,42 @@
-import re
+import ipaddress
 
-IP_REGEX = re.compile(
-    r"^(?:\d{1,3}\.){3}\d{1,3}"
-    r"(?:/\d{1,2})?"
-    r"(?:-(?:\d{1,3}\.){3}\d{1,3})?$"
-)
+def is_cidr(value):
+    try:
+        ipaddress.ip_network(value, strict=False)
+        return True
+    except ValueError:
+        return False
+
+def is_single_ip(value):
+    try:
+        ipaddress.ip_address(value)
+        return True
+    except ValueError:
+        return False
+
+def is_range(value):
+    if not isinstance(value, str) or "-" not in value:
+        return False
+
+    start, end = value.split("-", 1)
+
+    try:
+        ip_start = ipaddress.ip_address(start)
+        ip_end = ipaddress.ip_address(end)
+
+        return type(ip_start) is type(ip_end)
+    except ValueError:
+        return False
 
 def is_ip(value):
-    return isinstance(value, str) and IP_REGEX.match(value)
+    if not isinstance(value, str):
+        return False
+
+    return is_single_ip(value) or is_cidr(value) or is_range(value)
+
+def normalize_range(value):
+    start, end = value.split("-", 1)
+    return f"{start.strip()}-{end.strip()}"
 
 def extract_ips(value):
     ips = set()
@@ -21,7 +50,7 @@ def extract_ips(value):
             ips.update(extract_ips(item))
 
     elif is_ip(value):
-        ips.add(value)
+        ips.add(normalize_range(value) if is_range(value) else value)
 
     return ips
 
