@@ -1,6 +1,10 @@
 import re
 
-IP_REGEX = re.compile(r"^(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?$")
+IP_REGEX = re.compile(
+    r"^(?:\d{1,3}\.){3}\d{1,3}"
+    r"(?:/\d{1,2})?"
+    r"(?:-(?:\d{1,3}\.){3}\d{1,3})?$"
+)
 
 def is_ip(value):
     return isinstance(value, str) and IP_REGEX.match(value)
@@ -25,6 +29,9 @@ def resolve_path(data, path):
     for key in path:
         data = data[key]
     return data
+
+def collect_all_ips(data):
+    return extract_ips(data)
 
 def collect_ips(data, selected_paths):
     ips = set()
