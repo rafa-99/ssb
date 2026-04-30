@@ -1,4 +1,6 @@
 # ssb
+<img src="assets/app.svg" alt="ssb" width="100px">
+
 **simple server blocker** - A simple desktop tool built generate and apply outbound firewall rules based on a dataset of IP addresses.
 
 ## How to Use
