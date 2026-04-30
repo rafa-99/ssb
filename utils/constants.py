@@ -1,13 +1,13 @@
 # Configs
 APP_NAME = "ssb"
-VERSION = "1.0.1"
+VERSION = "1.1.0"
 GEOMETRY = "512"
 ICON = "assets/app.ico"
 TREE_HEIGHT = 300
 
 # Buttons
-BLOCK_SERVER = "Block Servers"
-UNBLOCK_SERVER = "Unblock Servers"
+BLOCK_SERVER = "Select Servers"
+UNBLOCK_SERVER = "Unselect Servers"
 CLEANUP_RULE = "Cleanup all Server Rules"
 SELECT_EXECUTABLE = "Select Executable"
 SELECT_DATASET = "Select Dataset"
@@ -24,6 +24,10 @@ CONFIRM_MESSAGE = "Confirm"
 ERROR_MESSAGE = "Error"
 ERROR_DATASET = "No dataset loaded"
 ERROR_IP = "No IPs found"
+
+# Warnings
+WARNING = "Warning"
+WARNING_NOTHING_BLOCKED = "Nothing to block"
 
 # Misc
 OPTIONAL = "(optional)"

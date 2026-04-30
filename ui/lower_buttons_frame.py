@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 import utils.constants as C
 
-from services.ip_utils import collect_ips
+from services.ip_utils import collect_ips, collect_all_ips
 from services.firewall import generate_firewall_rules, apply_rules, remove_rules, count_rules
 
 from tkinter import messagebox
@@ -16,14 +16,17 @@ def apply_rules_ui(tree, executable, store):
         return False
 
     selected = tree.get_selected()
-    ips = collect_ips(data, selected)
 
-    if not ips:
-        messagebox.showerror(C.ERROR_MESSAGE, C.ERROR_IP)
+    all_ips = set(collect_all_ips(data))
+    allowed_ips = set(collect_ips(data, selected))
+
+    blocked_ips = all_ips - allowed_ips
+
+    if not blocked_ips:
+        messagebox.showwarning(C.WARNING, C.WARNING_NOTHING_BLOCKED)
         return False
 
-    rules = generate_firewall_rules(exe_path, ips, f'-{store["name"]}')
-
+    rules = generate_firewall_rules(exe_path, blocked_ips, f'-{store["name"]}')
     return apply_rules(rules)
 
 def toggle_rules(tree, executable, store, state, label_var):
